@@ -1,0 +1,33 @@
+plugins {
+    id 'org.jenkins-ci.jpi' version '0.16.0'
+}
+
+jenkinsPlugin {
+    coreVersion = "1.609.3"
+
+    shortName = "jucies-sample-pipeline-dsl-extension"
+    displayName = "Jucies sample plugin with Pipeline DSL extension"
+
+    url = "https://github.com/jucies/sample-pipeline-dsl-ext-plugin"
+    gitHubUrl = "https://github.com/jucies/sample-pipeline-dsl-ext-plugin"
+
+    developers {
+        developer {
+            id "bsideup"
+            name "Sergei Egorov"
+            email "bsideup@gmail.com"
+        }
+    }
+}
+
+configurations {
+    provided
+    compile.extendsFrom provided
+}
+
+dependencies {
+    provided 'com.cloudbees:groovy-cps:1.7@jar'
+
+    jenkinsPlugins 'org.jenkins-ci.plugins.workflow:workflow-cps:1.13@jar'
+    jenkinsPlugins 'org.jenkins-ci.plugins.workflow:workflow-aggregator:1.13@jar'
+}
